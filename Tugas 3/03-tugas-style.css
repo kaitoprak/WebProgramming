@@ -96,6 +96,12 @@ CONTENT
 
 .media-card__description {
     margin: 0 0 0.75rem;
+    color: #4b5563;
+}
+
+.media-card.media-card--featured .media-card__description {
+    color: #1d4ed8;
+    font-weight: 600;
 }
 
 .media-card__meta {
