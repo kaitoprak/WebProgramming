@@ -1,0 +1,19 @@
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+}
+
+.media-card__cover {
+    width: 100%;
+}
+
+.media-card__cover img {
+    display: block;
+    width: 100%;
+    height: auto;
+}
