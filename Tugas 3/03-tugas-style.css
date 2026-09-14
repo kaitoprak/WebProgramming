@@ -1,25 +1,124 @@
+/* ========================================
+RESET GLOBAL
+======================================== */
+
 *,
 *::before,
 *::after {
     box-sizing: border-box;
 }
 
+html {
+    font-size: 16px;
+}
+
 body {
     margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;
+    background-color: #f3f4f6;
+    color: #1f2937;
 }
+
+/* ========================================
+MEDIA CARD
+======================================== */
+
+.media-card {
+    width: min(100% - 2rem, 900px);
+    margin: 2rem auto;
+    padding: 1.5rem;
+
+    ``` background-color: #ffffff;
+    border-radius: 1rem;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    ```
+}
+
+/* ========================================
+HOVER EFFECT
+======================================== */
+
+.media-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+}
+
+/* ========================================
+HEADER
+======================================== */
+
+.media-card__header {
+    margin-bottom: 1.25rem;
+}
+
+.media-card__label {
+    margin: 0 0 0.25rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.media-card__title {
+    margin: 0;
+    font-size: clamp(1.5rem, 4vw, 2.25rem);
+    line-height: 1.2;
+}
+
+/* ========================================
+COVER
+======================================== */
 
 .media-card__cover {
     width: 100%;
+    margin-bottom: 1.25rem;
 }
 
 .media-card__cover img {
     display: block;
     width: 100%;
     height: auto;
+    border-radius: 0.75rem;
+}
+
+/* ========================================
+CONTENT
+======================================== */
+
+.media-card__content {
+    margin-bottom: 1.5rem;
+}
+
+.media-card__description {
+    margin: 0 0 0.75rem;
+}
+
+.media-card__meta {
+    margin: 0;
+    font-size: 0.875rem;
+}
+
+/* ========================================
+MEDIA
+======================================== */
+
+.media-card__video,
+.media-card__audio {
+    margin-top: 1.5rem;
+}
+
+.media-card__subtitle {
+    margin: 0 0 0.75rem;
+    font-size: 1.125rem;
 }
 
 .media-card__player {
-    display:block;
+    display: block;
     width: 100%;
     height: auto;
     border-radius: 0.75rem;
@@ -27,4 +126,16 @@ body {
 
 .media-card__audio-player {
     width: 100%;
+}
+
+/* ========================================
+RESPONSIVE
+======================================== */
+
+@media (max-width: 600px) {
+    .media-card {
+        width: min(100% - 1rem, 900px);
+        margin: 1rem auto;
+        padding: 1rem;
+    }
 }
