@@ -17,3 +17,14 @@ body {
     width: 100%;
     height: auto;
 }
+
+.media-card__player {
+    display:block;
+    width: 100%;
+    height: auto;
+    border-radius: 0.75rem;
+}
+
+.media-card__audio-player {
+    width: 100%;
+}
