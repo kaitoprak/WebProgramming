@@ -1,9 +1,9 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>Portal Jurnal Ilmiah Fakultas</title>
 
@@ -16,236 +16,236 @@
 <body>
 
     <header class="site-header">
-        <div class="container">
-            <div class="navbar-custom">
-                <a href="#" class="site-title">
-                    Portal Jurnal Fakultas
-                </a>
+        <div class="header-container">
 
-                <nav class="nav-links" aria-label="Navigasi utama">
-                    <a href="#">Beranda</a>
-                    <a href="#">Jurnal</a>
-                    <a href="#">Artikel</a>
-                    <a href="#">Tentang</a>
-                    <a href="#">Kontak</a>
-                </nav>
+            <div class="site-brand">
+                <h1>Jurnal Ilmiah Fakultas</h1>
+                <p>Portal Publikasi Penelitian</p>
             </div>
+
+            <nav class="main-navigation" aria-label="Navigasi utama">
+                <a href="#beranda">Beranda</a>
+                <a href="#artikel">Artikel</a>
+                <a href="#jurnal">Jurnal</a>
+                <a href="#penulis">Penulis</a>
+                <a href="#tentang">Tentang</a>
+            </nav>
+
         </div>
     </header>
 
+    <main class="main-layout">
 
-    <main class="container">
-        <div class="journal-layout">
+        <aside class="sidebar-left">
+            <h2>Kategori</h2>
 
-            <aside class="sidebar-left" aria-label="Kategori jurnal">
-                <h2>Kategori</h2>
+            <ul>
+                <li><a href="#">Teknologi Informasi</a></li>
+                <li><a href="#">Sains Data</a></li>
+                <li><a href="#">Sistem Informasi</a></li>
+                <li><a href="#">Kecerdasan Buatan</a></li>
+                <li><a href="#">Jaringan Komputer</a></li>
+            </ul>
+        </aside>
 
+        <section class="article-section" id="artikel">
+            <div class="section-heading">
+                <h2>Artikel Terbaru</h2>
+                <p>
+                    Kumpulan publikasi ilmiah terbaru dari lingkungan fakultas.
+                </p>
+            </div>
+
+            <div class="article-grid">
+
+                <article class="card article-card h-100">
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge text-bg-primary align-self-start mb-3">
+                            Teknologi Informasi
+                        </span>
+
+                        <h3 class="card-title h5">
+                            Implementasi Sistem Informasi Akademik Berbasis Web
+                        </h3>
+
+                        <p class="card-text">
+                            Perancangan sistem informasi akademik untuk meningkatkan
+                            efisiensi pengelolaan data mahasiswa dan layanan akademik.
+                        </p>
+
+                        <div class="article-meta mb-3">
+                            <small class="text-body-secondary">
+                                Ahmad Fauzan · 12 September 2026
+                            </small>
+                        </div>
+
+                        <a href="#" class="btn btn-primary mt-auto">
+                            Baca artikel
+                        </a>
+                    </div>
+                </article>
+
+                <article class="card article-card h-100">
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge text-bg-success align-self-start mb-3">
+                            Sains Data
+                        </span>
+
+                        <h3 class="card-title h5">
+                            Analisis Data Akademik Menggunakan Machine Learning
+                        </h3>
+
+                        <p class="card-text">
+                            Studi mengenai pemanfaatan machine learning untuk menemukan
+                            pola dari data akademik mahasiswa.
+                        </p>
+
+                        <div class="article-meta mb-3">
+                            <small class="text-body-secondary">
+                                Nur Aisyah · 10 September 2026
+                            </small>
+                        </div>
+
+                        <a href="#" class="btn btn-primary mt-auto">
+                            Baca artikel
+                        </a>
+                    </div>
+                </article>
+
+                <article class="card article-card h-100">
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge text-bg-warning align-self-start mb-3">
+                            Kecerdasan Buatan
+                        </span>
+
+                        <h3 class="card-title h5">
+                            Penerapan Computer Vision untuk Deteksi Objek
+                        </h3>
+
+                        <p class="card-text">
+                            Pengembangan prototipe computer vision untuk melakukan
+                            deteksi objek secara otomatis pada citra digital.
+                        </p>
+
+                        <div class="article-meta mb-3">
+                            <small class="text-body-secondary">
+                                Muhammad Rizky · 8 September 2026
+                            </small>
+                        </div>
+
+                        <a href="#" class="btn btn-primary mt-auto">
+                            Baca artikel
+                        </a>
+                    </div>
+                </article>
+
+                <article class="card article-card h-100">
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge text-bg-info align-self-start mb-3">
+                            Jaringan Komputer
+                        </span>
+
+                        <h3 class="card-title h5">
+                            Evaluasi Kinerja Jaringan pada Lingkungan Kampus
+                        </h3>
+
+                        <p class="card-text">
+                            Pengukuran performa jaringan untuk mengetahui kualitas layanan
+                            internet pada lingkungan perguruan tinggi.
+                        </p>
+
+                        <div class="article-meta mb-3">
+                            <small class="text-body-secondary">
+                                Siti Rahma · 5 September 2026
+                            </small>
+                        </div>
+
+                        <a href="#" class="btn btn-primary mt-auto">
+                            Baca artikel
+                        </a>
+                    </div>
+                </article>
+
+                <article class="card article-card h-100">
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge text-bg-secondary align-self-start mb-3">
+                            Sistem Informasi
+                        </span>
+
+                        <h3 class="card-title h5">
+                            Pengembangan Dashboard Monitoring Penelitian
+                        </h3>
+
+                        <p class="card-text">
+                            Sistem dashboard untuk membantu pengelolaan dan pemantauan
+                            status penelitian di lingkungan fakultas.
+                        </p>
+
+                        <div class="article-meta mb-3">
+                            <small class="text-body-secondary">
+                                Dwi Pratama · 2 September 2026
+                            </small>
+                        </div>
+
+                        <a href="#" class="btn btn-primary mt-auto">
+                            Baca artikel
+                        </a>
+                    </div>
+                </article>
+
+                <article class="card article-card h-100">
+                    <div class="card-body d-flex flex-column">
+                        <span class="badge text-bg-danger align-self-start mb-3">
+                            Keamanan Siber
+                        </span>
+
+                        <h3 class="card-title h5">
+                            Analisis Kesadaran Keamanan Siber Mahasiswa
+                        </h3>
+
+                        <p class="card-text">
+                            Analisis tingkat kesadaran mahasiswa terhadap praktik keamanan
+                            akun, data pribadi, dan penggunaan layanan digital.
+                        </p>
+
+                        <div class="article-meta mb-3">
+                            <small class="text-body-secondary">
+                                Fajar Hidayat · 30 Agustus 2026
+                            </small>
+                        </div>
+
+                        <a href="#" class="btn btn-primary mt-auto">
+                            Baca artikel
+                        </a>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <aside class="sidebar-right">
+            <h2>Informasi</h2>
+
+            <section>
+                <h3>Jurnal Terpopuler</h3>
                 <ul>
-                    <li><a href="#">Teknologi Informasi</a></li>
-                    <li><a href="#">Sistem Informasi</a></li>
-                    <li><a href="#">Kecerdasan Buatan</a></li>
-                    <li><a href="#">Jaringan Komputer</a></li>
-                    <li><a href="#">Data Science</a></li>
+                    <li><a href="#">Jurnal Teknologi</a></li>
+                    <li><a href="#">Jurnal Informatika</a></li>
+                    <li><a href="#">Jurnal Sains Data</a></li>
                 </ul>
-            </aside>
-
-            <section class="article-section">
-                <div class="section-heading">
-                    <h1>Artikel Ilmiah</h1>
-                    <p>
-                        Kumpulan artikel penelitian dan publikasi ilmiah
-                        fakultas.
-                    </p>
-                </div>
-
-                <div class="article-grid">
-
-                    <article class="card h-100">
-                        <div class="card-body">
-                            <span class="badge text-bg-primary mb-2">
-                                Teknologi
-                            </span>
-
-                            <h2 class="card-title h5">
-                                Penerapan Artificial Intelligence
-                                pada Sistem Akademik
-                            </h2>
-
-                            <p class="card-text">
-                                Penelitian mengenai penerapan kecerdasan
-                                buatan untuk meningkatkan layanan akademik.
-                            </p>
-
-                            <p class="text-body-secondary mb-0">
-                                20 September 2026
-                            </p>
-                        </div>
-                    </article>
-
-
-                    <article class="card h-100">
-                        <div class="card-body">
-                            <span class="badge text-bg-success mb-2">
-                                Data
-                            </span>
-
-                            <h2 class="card-title h5">
-                                Analisis Data Mahasiswa
-                                Menggunakan Machine Learning
-                            </h2>
-
-                            <p class="card-text">
-                                Studi analisis data mahasiswa menggunakan
-                                algoritma machine learning.
-                            </p>
-
-                            <p class="text-body-secondary mb-0">
-                                18 September 2026
-                            </p>
-                        </div>
-                    </article>
-
-
-                    <article class="card h-100">
-                        <div class="card-body">
-                            <span class="badge text-bg-warning mb-2">
-                                Jaringan
-                            </span>
-
-                            <h2 class="card-title h5">
-                                Optimasi Infrastruktur
-                                Jaringan Kampus
-                            </h2>
-
-                            <p class="card-text">
-                                Penelitian mengenai optimalisasi jaringan
-                                untuk mendukung aktivitas akademik.
-                            </p>
-
-                            <p class="text-body-secondary mb-0">
-                                15 September 2026
-                            </p>
-                        </div>
-                    </article>
-
-
-                    <article class="card h-100">
-                        <div class="card-body">
-                            <span class="badge text-bg-danger mb-2">
-                                Sistem Informasi
-                            </span>
-
-                            <h2 class="card-title h5">
-                                Pengembangan Sistem Informasi
-                                Perpustakaan
-                            </h2>
-
-                            <p class="card-text">
-                                Perancangan sistem informasi perpustakaan
-                                berbasis web.
-                            </p>
-
-                            <p class="text-body-secondary mb-0">
-                                10 September 2026
-                            </p>
-                        </div>
-                    </article>
-
-
-                    <article class="card h-100">
-                        <div class="card-body">
-                            <span class="badge text-bg-info mb-2">
-                                Keamanan
-                            </span>
-
-                            <h2 class="card-title h5">
-                                Analisis Keamanan Aplikasi
-                                Berbasis Web
-                            </h2>
-
-                            <p class="card-text">
-                                Analisis terhadap aspek keamanan pada
-                                aplikasi web modern.
-                            </p>
-
-                            <p class="text-body-secondary mb-0">
-                                7 September 2026
-                            </p>
-                        </div>
-                    </article>
-
-
-                    <article class="card h-100">
-                        <div class="card-body">
-                            <span class="badge text-bg-secondary mb-2">
-                                IoT
-                            </span>
-
-                            <h2 class="card-title h5">
-                                Implementasi Internet of Things
-                                untuk Monitoring
-                            </h2>
-
-                            <p class="card-text">
-                                Implementasi perangkat IoT untuk melakukan
-                                monitoring secara real-time.
-                            </p>
-
-                            <p class="text-body-secondary mb-0">
-                                5 September 2026
-                            </p>
-                        </div>
-                    </article>
-
-                </div>
             </section>
 
+            <section>
+                <h3>Publikasi Terbaru</h3>
+                <p>15 artikel diterbitkan bulan ini.</p>
+            </section>
+        </aside>
 
-            <aside class="sidebar-right" aria-label="Informasi tambahan">
-
-                <section>
-                    <h2>Jurnal Terbaru</h2>
-
-                    <ul>
-                        <li>
-                            <a href="#">Jurnal Teknologi Informasi</a>
-                        </li>
-                        <li>
-                            <a href="#">Jurnal Sistem Informasi</a>
-                        </li>
-                        <li>
-                            <a href="#">Jurnal Data Science</a>
-                        </li>
-                    </ul>
-                </section>
-
-                <section>
-                    <h2>Informasi</h2>
-
-                    <p>
-                        Portal ini menyediakan akses terhadap berbagai
-                        publikasi ilmiah fakultas.
-                    </p>
-                </section>
-
-            </aside>
-
-        </div>
     </main>
 
-
     <footer class="site-footer">
-        <div class="container">
-            <p class="mb-0">
-                &copy; 2026 Portal Jurnal Ilmiah Fakultas
-            </p>
-        </div>
+        <p>&copy; 2026 Portal Jurnal Ilmiah Fakultas.</p>
     </footer>
-
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous">
-        </script>
 
 </body>
 
