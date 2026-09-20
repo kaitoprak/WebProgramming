@@ -1,149 +1,212 @@
+/* ==============================
+   Dasar
+   ============================== */
+
 * {
     box-sizing: border-box;
 }
 
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-    color: #212529;
+    font-family: Arial, Helvetica, sans-serif;
     background-color: #f8f9fa;
+    color: #212529;
 }
 
-/* Header */
+
+/* ==============================
+   Header + Navbar
+   Flexbox murni
+   ============================== */
 
 .site-header {
     background-color: #212529;
+    color: white;
+    margin-bottom: 2rem;
 }
 
-.main-nav {
+.navbar-custom {
+    min-height: 70px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem;
+    justify-content: space-between;
+    gap: 1rem;
 }
 
-.brand {
+.site-title {
     color: white;
     text-decoration: none;
     font-size: 1.25rem;
-    font-weight: bold;
+    font-weight: 700;
 }
 
 .nav-links {
     display: flex;
-    gap: 1.5rem;
+    align-items: center;
+    gap: 1.25rem;
 }
 
 .nav-links a {
     color: white;
     text-decoration: none;
+    font-size: 0.95rem;
 }
 
 .nav-links a:hover {
     text-decoration: underline;
 }
 
-/* Layout utama */
 
-.main-layout {
+/* ==============================
+   Layout utama
+   CSS Grid custom
+   ============================== */
+
+.journal-layout {
     display: grid;
     grid-template-columns: 200px minmax(0, 1fr) 220px;
-    gap: 1rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem;
+    gap: 1.5rem;
+    align-items: start;
 }
 
-.sidebar,
-.article-section,
-.right-sidebar {
-    padding: 1rem;
+
+/* ==============================
+   Sidebar
+   ============================== */
+
+.sidebar-left,
+.sidebar-right {
     background-color: white;
     border: 1px solid #dee2e6;
+    border-radius: 0.5rem;
+    padding: 1rem;
 }
 
-.section-heading {
+.sidebar-left h2,
+.sidebar-right h2 {
+    font-size: 1.1rem;
     margin-bottom: 1rem;
 }
 
-.article-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
-}
-
-.article-card {
-    height: 100%;
-}
-
-.article-card .card-body {
-    display: flex;
-    flex-direction: column;
-}
-
-.article-card .btn {
-    align-self: flex-start;
-    margin-top: auto;
-}
-
-.article-meta {
-    margin-bottom: 1rem;
-    font-size: 0.875rem;
-    color: #6c757d;
-}
-
-.category-list {
+.sidebar-left ul,
+.sidebar-right ul {
     margin: 0;
-    padding: 0;
-    list-style: none;
+    padding-left: 1.1rem;
 }
 
-.category-list li {
-    margin-bottom: 0.5rem;
+.sidebar-left li,
+.sidebar-right li {
+    margin-bottom: 0.75rem;
 }
 
-.category-list a {
+.sidebar-left a,
+.sidebar-right a {
     color: #212529;
     text-decoration: none;
 }
 
-.category-list a:hover {
+.sidebar-left a:hover,
+.sidebar-right a:hover {
     text-decoration: underline;
 }
 
-/* Tablet */
+
+/* ==============================
+   Kolom artikel
+   ============================== */
+
+.article-section {
+    min-width: 0;
+}
+
+.section-heading {
+    margin-bottom: 1.5rem;
+}
+
+.section-heading h1 {
+    margin-bottom: 0.5rem;
+    font-size: 1.8rem;
+}
+
+.section-heading p {
+    margin: 0;
+    color: #6c757d;
+}
+
+
+/* ==============================
+   Grid mikro artikel
+   ============================== */
+
+.article-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+}
+
+
+/* ==============================
+   Footer
+   ============================== */
+
+.site-footer {
+    margin-top: 3rem;
+    padding: 1.5rem 0;
+    background-color: #212529;
+    color: white;
+    text-align: center;
+}
+
+
+/* ==============================
+   Tablet
+   Mulai di bawah 992px
+   ============================== */
 
 @media (max-width: 991.98px) {
-    .main-layout {
+
+    .journal-layout {
         grid-template-columns: 200px minmax(0, 1fr);
     }
 
-    .right-sidebar {
+    .sidebar-right {
         display: none;
     }
+
 }
 
-/* Mobile */
+
+/* ==============================
+   Ponsel
+   ============================== */
 
 @media (max-width: 767.98px) {
-    .main-nav {
-        flex-direction: column;
+
+    .navbar-custom {
         align-items: stretch;
-        gap: 1rem;
+        flex-direction: column;
+        padding: 1rem 0;
+    }
+
+    .site-title {
+        text-align: center;
     }
 
     .nav-links {
         flex-direction: column;
-        gap: 0.5rem;
+        gap: 0.75rem;
     }
 
-    .main-layout {
+    .journal-layout {
         grid-template-columns: 1fr;
     }
 
-    .right-sidebar {
-        display: block;
+    .sidebar-left {
+        width: 100%;
     }
+
+    .article-grid {
+        grid-template-columns: 1fr;
+    }
+
 }
