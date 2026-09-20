@@ -133,11 +133,6 @@ body {
     color: #6c757d;
 }
 
-
-/* ==============================
-   Grid mikro artikel
-   ============================== */
-
 .article-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -157,12 +152,6 @@ body {
     text-align: center;
 }
 
-
-/* ==============================
-   Tablet
-   Mulai di bawah 992px
-   ============================== */
-
 @media (max-width: 991.98px) {
 
     .journal-layout {
@@ -174,11 +163,6 @@ body {
     }
 
 }
-
-
-/* ==============================
-   Ponsel
-   ============================== */
 
 @media (max-width: 767.98px) {
 
