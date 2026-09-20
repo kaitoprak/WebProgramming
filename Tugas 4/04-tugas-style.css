@@ -153,11 +153,9 @@ body {
 }
 
 @media (max-width: 991.98px) {
-
     .journal-layout {
         grid-template-columns: 200px minmax(0, 1fr);
     }
-
     .sidebar-right {
         display: none;
     }
@@ -185,12 +183,16 @@ body {
         grid-template-columns: 1fr;
     }
 
-    .sidebar-left {
+    .sidebar-left,
+    .sidebar-right {
         width: 100%;
+    }
+
+    .sidebar-right {
+        display: block;
     }
 
     .article-grid {
         grid-template-columns: 1fr;
     }
-
 }
