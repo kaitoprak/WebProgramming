@@ -100,3 +100,92 @@ kepada `penerbit.id_penerbit`.
 Pada tabel `transaksi_peminjaman`, atribut `nim` menjadi foreign key yang
 mengacu kepada `mahasiswa.nim`, sedangkan `id_buku` menjadi foreign key yang
 mengacu kepada `buku.id_buku`.
+
+## 6. Normalisasi
+
+### 6.1 Unnormalized Form (UNF)
+
+Pada kondisi awal, data mahasiswa, buku, penerbit, dan transaksi peminjaman
+diasumsikan masih disimpan dalam satu struktur data.
+
+Contoh struktur data awal:
+
+| ID Transaksi | NIM | Nama Mahasiswa | Email | Program Studi | ID Buku | Judul Buku | ISBN | Tahun Terbit | ID Penerbit | Nama Penerbit | Alamat Penerbit | Tanggal Peminjaman | Tanggal Jatuh Tempo | Tanggal Pengembalian |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| TR001 | 13001 | Andi | andi@kampus.ac.id | Informatika | B001 | Basis Data | 978-001 | 2024 | P001 | Informatika Press | Makassar | 2026-09-01 | 2026-09-08 | 2026-09-07 |
+| TR002 | 13001 | Andi | andi@kampus.ac.id | Informatika | B002 | Algoritma | 978-002 | 2023 | P002 | Tech Publisher | Jakarta | 2026-09-03 | 2026-09-10 | - |
+| TR003 | 13002 | Budi | budi@kampus.ac.id | Sistem Informasi | B001 | Basis Data | 978-001 | 2024 | P001 | Informatika Press | Makassar | 2026-09-04 | 2026-09-11 | - |
+
+Pada bentuk UNF, data dari beberapa entitas masih berada dalam satu tabel.
+Akibatnya, informasi mahasiswa, buku, dan penerbit dapat berulang pada
+beberapa transaksi.
+
+Contohnya, data buku `B001` dan penerbit `P001` muncul kembali ketika buku
+yang sama dipinjam oleh mahasiswa yang berbeda.
+
+Kondisi tersebut dapat menimbulkan:
+
+- **Update anomaly**, yaitu perubahan data harus dilakukan pada beberapa baris.
+- **Insert anomaly**, yaitu data buku atau penerbit baru sulit disimpan jika
+  belum memiliki transaksi.
+- **Delete anomaly**, yaitu penghapusan transaksi tertentu berpotensi
+  menghilangkan satu-satunya informasi mengenai buku atau penerbit.
+
+### 6.2 First Normal Form (1NF)
+
+Untuk memenuhi 1NF, setiap atribut harus memiliki nilai atomik dan tidak boleh
+terdapat repeating group atau kumpulan nilai dalam satu atribut.
+
+Setiap baris pada tabel merepresentasikan satu transaksi peminjaman satu buku.
+Dengan demikian, atribut pada setiap baris memiliki satu nilai.
+
+Struktur tabel pada tahap 1NF masih berupa satu tabel:
+
+```text
+PEMINJAMAN(
+    id_transaksi,
+    nim,
+    nama_mahasiswa,
+    email,
+    program_studi,
+    id_buku,
+    judul_buku,
+    isbn,
+    tahun_terbit,
+    id_penerbit,
+    nama_penerbit,
+    alamat_penerbit,
+    tanggal_peminjaman,
+    tanggal_jatuh_tempo,
+    tanggal_pengembalian
+)
+
+Primary key pada tahap ini adalah `id_transaksi`, karena setiap transaksi
+peminjaman memiliki identitas yang unik.
+
+Walaupun sudah memenuhi 1NF, tabel masih mengandung redundansi. Sebagai
+contoh, data mahasiswa dengan NIM `13001` muncul pada lebih dari satu
+transaksi. Data buku `B001` dan penerbit `P001` juga muncul kembali ketika
+buku yang sama dipinjam oleh mahasiswa lain.
+
+Dengan demikian, 1NF belum menghilangkan seluruh redundansi dan masih
+diperlukan proses normalisasi ke bentuk berikutnya.
+
+### 6.3 Second Normal Form (2NF)
+
+2NF mensyaratkan bahwa tabel telah memenuhi 1NF dan setiap atribut non-key
+harus bergantung sepenuhnya pada primary key.
+
+Pada tabel awal, `id_transaksi` digunakan sebagai primary key. Atribut seperti
+`nim`, `tanggal_peminjaman`, `tanggal_jatuh_tempo`, dan
+`tanggal_pengembalian` berkaitan dengan transaksi, sedangkan informasi buku
+berkaitan dengan `id_buku`.
+
+Ketergantungan atribut dapat digambarkan sebagai berikut:
+
+```text
+id_transaksi → nim, tanggal_peminjaman, tanggal_jatuh_tempo,
+               tanggal_pengembalian
+
+id_buku → judul, isbn, tahun_terbit, id_penerbit,
+          nama_penerbit, alamat_penerbit
