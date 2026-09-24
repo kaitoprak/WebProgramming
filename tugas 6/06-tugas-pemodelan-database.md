@@ -189,3 +189,63 @@ id_transaksi → nim, tanggal_peminjaman, tanggal_jatuh_tempo,
 
 id_buku → judul, isbn, tahun_terbit, id_penerbit,
           nama_penerbit, alamat_penerbit
+
+## 7. Rancangan Tabel Akhir
+
+Setelah proses normalisasi hingga 3NF, sistem terdiri dari empat tabel:
+`mahasiswa`, `penerbit`, `buku`, dan `transaksi_peminjaman`.
+
+### 7.1 Tabel `mahasiswa`
+
+| Kolom | Tipe Data | Constraint | Keterangan |
+|---|---|---|---|
+| `nim` | `VARCHAR(20)` | PK, NOT NULL | Nomor induk mahasiswa |
+| `nama` | `VARCHAR(100)` | NOT NULL | Nama mahasiswa |
+| `email` | `VARCHAR(150)` | NOT NULL, UNIQUE | Email mahasiswa |
+| `program_studi` | `VARCHAR(100)` | NOT NULL | Program studi mahasiswa |
+
+### 7.2 Tabel `penerbit`
+
+| Kolom | Tipe Data | Constraint | Keterangan |
+|---|---|---|---|
+| `id_penerbit` | `INT` | PK, NOT NULL | Identitas unik penerbit |
+| `nama_penerbit` | `VARCHAR(150)` | NOT NULL | Nama penerbit |
+| `alamat` | `VARCHAR(255)` | NOT NULL | Alamat penerbit |
+
+### 7.3 Tabel `buku`
+
+| Kolom | Tipe Data | Constraint | Keterangan |
+|---|---|---|---|
+| `id_buku` | `INT` | PK, NOT NULL | Identitas unik buku |
+| `judul` | `VARCHAR(200)` | NOT NULL | Judul buku |
+| `isbn` | `VARCHAR(20)` | NOT NULL, UNIQUE | ISBN buku |
+| `tahun_terbit` | `SMALLINT` | NOT NULL | Tahun buku diterbitkan |
+| `id_penerbit` | `INT` | FK, NOT NULL | Penerbit buku |
+
+Foreign key `id_penerbit` mengacu kepada `penerbit.id_penerbit`.
+
+### 7.4 Tabel `transaksi_peminjaman`
+
+| Kolom | Tipe Data | Constraint | Keterangan |
+|---|---|---|---|
+| `id_transaksi` | `INT` | PK, NOT NULL | Identitas unik transaksi |
+| `nim` | `VARCHAR(20)` | FK, NOT NULL | Mahasiswa yang meminjam |
+| `id_buku` | `INT` | FK, NOT NULL | Buku yang dipinjam |
+| `tanggal_peminjaman` | `DATE` | NOT NULL | Tanggal peminjaman |
+| `tanggal_jatuh_tempo` | `DATE` | NOT NULL | Batas waktu pengembalian |
+| `tanggal_pengembalian` | `DATE` | NULL | Tanggal aktual pengembalian |
+
+Foreign key `nim` mengacu kepada `mahasiswa.nim`.
+
+Foreign key `id_buku` mengacu kepada `buku.id_buku`.
+
+`tanggal_pengembalian` diperbolehkan bernilai `NULL` karena buku yang masih
+dipinjam belum memiliki tanggal pengembalian.
+
+### 7.5 Ringkasan Relasi
+
+| Relasi | Kardinalitas | Foreign Key |
+|---|---|---|
+| Mahasiswa → Transaksi Peminjaman | 1 : N | `transaksi_peminjaman.nim` |
+| Buku → Transaksi Peminjaman | 1 : N | `transaksi_peminjaman.id_buku` |
+| Penerbit → Buku | 1 : N | `buku.id_penerbit` |
