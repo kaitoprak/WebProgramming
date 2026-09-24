@@ -81,3 +81,22 @@ Dengan demikian, kardinalitas relasi adalah:
 MAHASISWA 1 : N TRANSAKSI_PEMINJAMAN
 BUKU      1 : N TRANSAKSI_PEMINJAMAN
 PENERBIT  1 : N BUKU
+
+## 5. Primary Key dan Foreign Key
+
+| Tabel | Primary Key | Foreign Key |
+|---|---|---|
+| `mahasiswa` | `nim` | - |
+| `penerbit` | `id_penerbit` | - |
+| `buku` | `id_buku` | `id_penerbit` → `penerbit.id_penerbit` |
+| `transaksi_peminjaman` | `id_transaksi` | `nim` → `mahasiswa.nim`, `id_buku` → `buku.id_buku` |
+
+Primary key digunakan sebagai identitas unik setiap baris pada tabel.
+Foreign key digunakan untuk menghubungkan tabel yang memiliki relasi.
+
+Pada tabel `buku`, atribut `id_penerbit` menjadi foreign key yang mengacu
+kepada `penerbit.id_penerbit`.
+
+Pada tabel `transaksi_peminjaman`, atribut `nim` menjadi foreign key yang
+mengacu kepada `mahasiswa.nim`, sedangkan `id_buku` menjadi foreign key yang
+mengacu kepada `buku.id_buku`.
