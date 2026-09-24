@@ -173,22 +173,41 @@ diperlukan proses normalisasi ke bentuk berikutnya.
 
 ### 6.3 Second Normal Form (2NF)
 
-2NF mensyaratkan bahwa tabel telah memenuhi 1NF dan setiap atribut non-key
-harus bergantung sepenuhnya pada primary key.
+2NF mensyaratkan bahwa tabel telah memenuhi 1NF dan tidak memiliki
+ketergantungan parsial, yaitu atribut non-key hanya boleh bergantung pada
+sebagian dari primary key.
 
-Pada tabel awal, `id_transaksi` digunakan sebagai primary key. Atribut seperti
-`nim`, `tanggal_peminjaman`, `tanggal_jatuh_tempo`, dan
-`tanggal_pengembalian` berkaitan dengan transaksi, sedangkan informasi buku
-berkaitan dengan `id_buku`.
+Pada tabel 1NF, primary key yang digunakan adalah `id_transaksi` dan hanya
+terdiri dari satu atribut. Karena primary key tidak berupa gabungan beberapa
+atribut, maka tidak mungkin terjadi ketergantungan parsial. Dengan demikian,
+tabel 1NF secara teori telah memenuhi 2NF.
 
-Ketergantungan atribut dapat digambarkan sebagai berikut:
+Namun, tabel masih mengandung redundansi karena informasi buku dan penerbit
+disimpan bersama dengan data transaksi. Untuk menghasilkan struktur yang
+lebih terorganisasi dan mempersiapkan proses menuju 3NF, atribut yang
+berkaitan dengan buku dipisahkan dari atribut transaksi.
+
+Hasil pemisahan menjadi:
 
 ```text
-id_transaksi → nim, tanggal_peminjaman, tanggal_jatuh_tempo,
-               tanggal_pengembalian
+TRANSAKSI_PEMINJAMAN(
+    id_transaksi,
+    nim,
+    id_buku,
+    tanggal_peminjaman,
+    tanggal_jatuh_tempo,
+    tanggal_pengembalian
+)
 
-id_buku → judul, isbn, tahun_terbit, id_penerbit,
-          nama_penerbit, alamat_penerbit
+BUKU(
+    id_buku,
+    judul,
+    isbn,
+    tahun_terbit,
+    id_penerbit,
+    nama_penerbit,
+    alamat_penerbit
+)
 
 ## 7. Rancangan Tabel Akhir
 
@@ -249,3 +268,44 @@ dipinjam belum memiliki tanggal pengembalian.
 | Mahasiswa → Transaksi Peminjaman | 1 : N | `transaksi_peminjaman.nim` |
 | Buku → Transaksi Peminjaman | 1 : N | `transaksi_peminjaman.id_buku` |
 | Penerbit → Buku | 1 : N | `buku.id_penerbit` |
+
+## 8. ERD Logis
+
+ERD berikut menggambarkan hubungan antarentitas beserta primary key dan
+foreign key yang telah ditentukan.
+
+```mermaid
+erDiagram
+    MAHASISWA ||--o{ TRANSAKSI_PEMINJAMAN : melakukan
+    BUKU ||--o{ TRANSAKSI_PEMINJAMAN : dipinjam
+    PENERBIT ||--o{ BUKU : menerbitkan
+
+    MAHASISWA {
+        VARCHAR(20) nim PK
+        VARCHAR(100) nama
+        VARCHAR(150) email UK
+        VARCHAR(100) program_studi
+    }
+
+    PENERBIT {
+        INT id_penerbit PK
+        VARCHAR(150) nama_penerbit
+        VARCHAR(255) alamat
+    }
+
+    BUKU {
+        INT id_buku PK
+        VARCHAR(200) judul
+        VARCHAR(20) isbn UK
+        SMALLINT tahun_terbit
+        INT id_penerbit FK
+    }
+
+    TRANSAKSI_PEMINJAMAN {
+        INT id_transaksi PK
+        VARCHAR(20) nim FK
+        INT id_buku FK
+        DATE tanggal_peminjaman
+        DATE tanggal_jatuh_tempo
+        DATE tanggal_pengembalian
+    }
