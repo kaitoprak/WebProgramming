@@ -34,8 +34,37 @@ class GuestBook
 
         $this->pdo->exec($sql);
     }
+
+    public function saveMessage(
+        string $nama,
+        string $email,
+        string $pesan
+    ): void {
+        $sql = "
+            INSERT INTO buku_tamu (nama, email, pesan)
+            VALUES (:nama, :email, :pesan)
+        ";
+
+        $statement = $this->pdo->prepare($sql);
+
+        $statement->execute([
+            ':nama' => $nama,
+            ':email' => $email,
+            ':pesan' => $pesan,
+        ]);
+    }
+
+    public function getMessages(): array
+    {
+        $sql = "
+            SELECT id, nama, email, pesan, tanggal_kirim
+            FROM buku_tamu
+            ORDER BY tanggal_kirim DESC
+        ";
+
+        $statement = $this->pdo->prepare($sql);
+        $statement->execute();
+
+        return $statement->fetchAll(PDO::FETCH_ASSOC);
+    }
 }
-
-$guestBook = new GuestBook();
-
-echo 'Database berhasil dibuat.';
