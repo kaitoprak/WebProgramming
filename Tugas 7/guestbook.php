@@ -53,6 +53,8 @@ $messages = $guestBook->getMessages();
 </head>
 <body>
 
+    <!-- Modul 7 selesai -->
+
     <h1>Buku Tamu Perpustakaan</h1>
 
     <h2>Tulis Pesan</h2>
