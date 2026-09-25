@@ -32,10 +32,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (mb_strlen($pesan) < 5) {
-        die('Pesan minimal 5 karakter.');
+    die('Pesan minimal 5 karakter.');
     }
 
     $guestBook->saveMessage($nama, $email, $pesan);
+
+    header('Location: ' . $_SERVER['PHP_SELF']);
+    exit;
 }
 
 $messages = $guestBook->getMessages();
